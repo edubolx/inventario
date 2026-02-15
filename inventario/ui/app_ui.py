@@ -133,6 +133,24 @@ def render_app(
 
     if page == "Configuración":
         st.subheader("Sincronización con Google Sheets")
+        if sheet_sync.enabled():
+            st.success("Google Sheets configurado correctamente.")
+        else:
+            st.warning(
+                "Faltan credenciales para sincronizar. Configura GOOGLE_SERVICE_ACCOUNT_FILE y GOOGLE_SPREADSHEET_ID en .env"
+            )
+            with st.expander("Ver guía rápida"):
+                st.markdown(
+                    """
+1. Crea una Service Account en Google Cloud.
+2. Habilita Google Sheets API.
+3. Descarga el JSON y guárdalo en `credentials/google-service-account.json`.
+4. Crea archivo `.env` con:
+   - `GOOGLE_SERVICE_ACCOUNT_FILE=./credentials/google-service-account.json`
+   - `GOOGLE_SPREADSHEET_ID=<tu_id_de_sheet>`
+5. Comparte tu Google Sheet con el correo de la Service Account.
+                    """
+                )
         current_mode = settings_repo.get("sync_mode", "manual")
         mode = st.radio("Modo de sincronización", ["manual", "automatico"], index=0 if current_mode == "manual" else 1)
         if st.button("Guardar modo"):

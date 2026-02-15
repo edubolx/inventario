@@ -51,10 +51,13 @@ Abre `http://localhost:8501`.
 1. Crear Service Account en Google Cloud.
 2. Habilitar Google Sheets API.
 3. Descargar JSON de credenciales.
-4. Crear `.env` basado en `.env.example` con:
+4. Crear `.env` (en la raíz del proyecto) basado en `.env.example` con:
    - `GOOGLE_SERVICE_ACCOUNT_FILE`
    - `GOOGLE_SPREADSHEET_ID`
 5. Compartir el spreadsheet con el email de la service account.
+
+
+> La app carga automáticamente las variables del archivo `.env` al iniciar.
 
 La app sincroniza (manual o automático) a las hojas:
 - `Inventario`

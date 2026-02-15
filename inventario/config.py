@@ -4,6 +4,10 @@ import os
 from dataclasses import dataclass
 from zoneinfo import ZoneInfo
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 @dataclass(frozen=True)
 class AppConfig:
