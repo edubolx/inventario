@@ -10,14 +10,38 @@ Aplicación local de inventario (usuario único) con Streamlit + SQLite.
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 ```
 
 ## Ejecutar
+> Recomendado: usar `python -m streamlit` para evitar problemas de PATH.
+
 ```powershell
-streamlit run app.py
+python -m streamlit run app.py
 ```
+
 Abre `http://localhost:8501`.
+
+## Solución rápida de problemas en Windows
+- **¿"Attempting uninstall" durante `pip install`?**
+  Sí, es normal. `pip` puede desinstalar versiones previas para instalar las compatibles con `requirements.txt`.
+- **¿`streamlit` no se reconoce como comando?**
+  Ejecuta la app con:
+  ```powershell
+  python -m streamlit run app.py
+  ```
+  Así no dependes de que el directorio `Scripts` esté en `PATH`.
+- **¿No activaste el entorno virtual?**
+  Vuelve a activar antes de ejecutar:
+  ```powershell
+  .\.venv\Scripts\Activate.ps1
+  ```
+- **¿PowerShell bloquea scripts?**
+  Ejecuta temporalmente:
+  ```powershell
+  Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+  ```
 
 ## Base de datos
 - SQLite local en `inventario.db` (o valor de `INVENTARIO_DB_PATH`).
