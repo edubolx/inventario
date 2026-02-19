@@ -32,6 +32,12 @@ Abre `http://localhost:8501`.
    .\.venv\Scripts\Activate.ps1
    ```
 
+   Si aparece el error *"la ejecución de scripts está deshabilitada"*, ejecuta primero (solo para esta terminal):
+   ```powershell
+   Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+   ```
+   y luego vuelve a correr `.\.venv\Scripts\Activate.ps1`.
+
    Si ya estás dentro de `C:\...\.venv\Scripts>`, entonces ejecuta:
    ```powershell
    .\Activate.ps1
@@ -107,10 +113,18 @@ Para usar Google Sheets, agrega en `.env`:
     ```powershell
     .\Activate.ps1
     ```
-- **¿PowerShell bloquea scripts?**
-  Ejecuta temporalmente:
+- **¿Error: "la ejecución de scripts está deshabilitada" (`PSSecurityException`)?**
+  En esa misma ventana de PowerShell, habilita scripts de forma temporal:
   ```powershell
   Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+  ```
+  Luego ejecuta de nuevo:
+  ```powershell
+  .\Activate.ps1
+  ```
+  Si prefieres no tocar la política de scripts, puedes usar CMD en su lugar:
+  ```cmd
+  .venv\Scripts\activate.bat
   ```
 
 ## Base de datos
