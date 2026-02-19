@@ -43,11 +43,15 @@ Abre `http://localhost:8501`.
    .\Activate.ps1
    ```
    (con `./` o `\.\` al inicio; en PowerShell no basta con escribir `Activate.ps1`).
-3. Inicia la app:
+3. **Asegúrate de estar en la raíz del proyecto** (donde existe `app.py`). Si estás en `.venv\Scripts`, regresa con:
+   ```powershell
+   cd ..\..
+   ```
+4. Inicia la app:
    ```powershell
    python -m streamlit run app.py
    ```
-4. En tu navegador, abre `http://localhost:8501`.
+5. En tu navegador, abre `http://localhost:8501`.
 
 ### 2) Conocer el menú lateral
 La app tiene 4 secciones principales:
@@ -125,6 +129,17 @@ Para usar Google Sheets, agrega en `.env`:
   Si prefieres no tocar la política de scripts, puedes usar CMD en su lugar:
   ```cmd
   .venv\Scripts\activate.bat
+  ```
+
+- **¿Error: "File does not exist: app.py" al ejecutar Streamlit?**
+  Estás en la carpeta equivocada (por ejemplo `.venv\Scripts`). Debes ejecutar Streamlit desde la raíz del proyecto:
+  ```powershell
+  cd C:\Inventario_Intelsius
+  python -m streamlit run app.py
+  ```
+  Si quieres quedarte dentro de `.venv\Scripts`, usa ruta relativa al archivo:
+  ```powershell
+  python -m streamlit run ..\..\app.py
   ```
 
 ## Base de datos
