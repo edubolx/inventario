@@ -93,6 +93,25 @@ Para usar Google Sheets, agrega en `.env`:
 - `GOOGLE_SERVICE_ACCOUNT_FILE`
 - `GOOGLE_SPREADSHEET_ID`
 
+> ⚠️ **Importante:** las variables van en el archivo **`.env`** (en la raíz del proyecto), **no** en `.venv`.
+
+### 6.1) Activar sincronización paso a paso
+1. Verifica que exista un archivo `.env` en la raíz del proyecto (misma carpeta que `app.py`).
+2. Asegúrate de tener estas 2 líneas:
+   ```env
+   GOOGLE_SERVICE_ACCOUNT_FILE=./credentials/google-service-account.json
+   GOOGLE_SPREADSHEET_ID=tu_spreadsheet_id
+   ```
+3. Confirma que el archivo JSON de la service account exista en la ruta indicada.
+4. Comparte tu Google Sheet con el correo de la service account (permiso Editor).
+5. Reinicia la app (`Ctrl + C` y luego `python -m streamlit run app.py`).
+6. En la app, entra a **Configuración**:
+   - Debe aparecer: **"Google Sheets configurado correctamente."**
+   - Elige modo **manual** o **automatico** y guarda.
+   - Haz clic en **Sincronizar ahora** para probar.
+
+Si la configuración está bien, verás datos en las pestañas del spreadsheet: `Inventario`, `Movimientos` y `Entradas_Importacion`.
+
 ### 7) Cerrar y volver a abrir sin perder datos
 - Tus datos se guardan en SQLite local (`inventario.db`).
 - Para cerrar, detén Streamlit con `Ctrl + C` en la terminal.
@@ -141,6 +160,10 @@ Para usar Google Sheets, agrega en `.env`:
   ```powershell
   python -m streamlit run ..\..\app.py
   ```
+
+- **¿Puse `GOOGLE_SPREADSHEET_ID` en `.venv` y no sincroniza?**
+  Muévelo al archivo `.env` en la raíz del proyecto (no dentro de `.venv`).
+  Luego reinicia Streamlit y entra a **Configuración > Sincronizar ahora**.
 
 ## Base de datos
 - SQLite local en `inventario.db` (o valor de `INVENTARIO_DB_PATH`).
