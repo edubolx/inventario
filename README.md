@@ -165,6 +165,15 @@ Si la configuración está bien, verás datos en las pestañas del spreadsheet: 
   Muévelo al archivo `.env` en la raíz del proyecto (no dentro de `.venv`).
   Luego reinicia Streamlit y entra a **Configuración > Sincronizar ahora**.
 
+- **¿Sigue saliendo "Sincronización omitida" aunque ya llené `.env`?**
+  Revisa estos puntos rápidos:
+  1. El archivo se llama exactamente `.env` (no `.env.txt`).
+  2. No dejes espacios en blanco antes del nombre de la variable.
+  3. Reinicia la app después de guardar `.env`.
+  4. Verifica que ambas variables tengan valor:
+     - `GOOGLE_SERVICE_ACCOUNT_FILE`
+     - `GOOGLE_SPREADSHEET_ID`
+
 ## Base de datos
 - SQLite local en `inventario.db` (o valor de `INVENTARIO_DB_PATH`).
 - Kardex siempre se guarda en DB, pero puede ocultarse en UI.
