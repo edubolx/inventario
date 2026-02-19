@@ -27,10 +27,16 @@ Abre `http://localhost:8501`.
 
 ### 1) Abrir la app
 1. Abre una terminal PowerShell dentro de la carpeta del proyecto.
-2. Activa el entorno virtual:
+2. Activa el entorno virtual (desde la raíz del proyecto):
    ```powershell
    .\.venv\Scripts\Activate.ps1
    ```
+
+   Si ya estás dentro de `C:\...\.venv\Scripts>`, entonces ejecuta:
+   ```powershell
+   .\Activate.ps1
+   ```
+   (con `./` o `\.\` al inicio; en PowerShell no basta con escribir `Activate.ps1`).
 3. Inicia la app:
    ```powershell
    python -m streamlit run app.py
@@ -91,11 +97,16 @@ Para usar Google Sheets, agrega en `.env`:
   python -m streamlit run app.py
   ```
   Así no dependes de que el directorio `Scripts` esté en `PATH`.
-- **¿No activaste el entorno virtual?**
-  Vuelve a activar antes de ejecutar:
-  ```powershell
-  .\.venv\Scripts\Activate.ps1
-  ```
+- **¿Error: "Activate.ps1 no se reconoce"?**
+  En PowerShell debes incluir la ruta relativa:
+  - Desde la carpeta raíz del proyecto:
+    ```powershell
+    .\.venv\Scripts\Activate.ps1
+    ```
+  - Si ya estás dentro de `.venv\Scripts`:
+    ```powershell
+    .\Activate.ps1
+    ```
 - **¿PowerShell bloquea scripts?**
   Ejecuta temporalmente:
   ```powershell
