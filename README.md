@@ -23,6 +23,65 @@ python -m streamlit run app.py
 
 Abre `http://localhost:8501`.
 
+## Guía rápida desde cero (primer uso)
+
+### 1) Abrir la app
+1. Abre una terminal PowerShell dentro de la carpeta del proyecto.
+2. Activa el entorno virtual:
+   ```powershell
+   .\.venv\Scripts\Activate.ps1
+   ```
+3. Inicia la app:
+   ```powershell
+   python -m streamlit run app.py
+   ```
+4. En tu navegador, abre `http://localhost:8501`.
+
+### 2) Conocer el menú lateral
+La app tiene 4 secciones principales:
+- **Resumen de inventario**: consulta existencias por SKU o descripción.
+- **Registrar movimiento**: captura entradas, salidas, ajustes y transferencias.
+- **Kardex**: historial de movimientos con filtros y exportaciones.
+- **Configuración**: sincronización a Google Sheets y visibilidad del Kardex.
+
+### 3) Registrar tu primer movimiento
+1. Entra a **Registrar movimiento**.
+2. Selecciona el **Tipo de movimiento**.
+3. Escribe el **SKU** (recomendado: usar siempre el mismo formato).
+4. Captura la **Cantidad** y agrega **Notas** si aplica.
+5. Haz clic en **Registrar**.
+
+Notas según el tipo:
+- **Ajuste**: pide motivo obligatorio y si incrementa o reduce.
+- **Transferencia**: pide ubicación origen y destino.
+- **Entrada importacion**: pide costos (mercancía, pedimento y aduanales).
+
+### 4) Revisar existencias
+1. Ve a **Resumen de inventario**.
+2. Usa el buscador para filtrar por SKU o descripción.
+3. Descarga el reporte con **Exportar inventario CSV**.
+
+### 5) Consultar historial (Kardex)
+1. Ve a **Kardex**.
+2. Filtra por SKU o por tipo de movimiento.
+3. Exporta movimientos o entradas de importación en CSV.
+
+Si no aparece Kardex, habilítalo en **Configuración > Mostrar Kardex en UI**.
+
+### 6) Configurar sincronización (opcional)
+En **Configuración** puedes:
+- Elegir modo **manual** o **automatico**.
+- Ejecutar **Sincronizar ahora** cuando lo necesites.
+
+Para usar Google Sheets, agrega en `.env`:
+- `GOOGLE_SERVICE_ACCOUNT_FILE`
+- `GOOGLE_SPREADSHEET_ID`
+
+### 7) Cerrar y volver a abrir sin perder datos
+- Tus datos se guardan en SQLite local (`inventario.db`).
+- Para cerrar, detén Streamlit con `Ctrl + C` en la terminal.
+- Para volver a entrar, repite el comando `python -m streamlit run app.py`.
+
 ## Solución rápida de problemas en Windows
 - **¿"Attempting uninstall" durante `pip install`?**
   Sí, es normal. `pip` puede desinstalar versiones previas para instalar las compatibles con `requirements.txt`.
